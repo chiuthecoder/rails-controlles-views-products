@@ -1,0 +1,19 @@
+<h1>All Comments</h1>
+
+<table>
+<tr>
+	<td>Comments</td>
+	<td>Product ID</td>
+	<td>Actions</td>
+</tr>
+<% @comments.each do |comment| %>
+<tr>
+	
+	<td><%= comment.comment %></td>
+<td><a href='/products/<%= comment.product_id %>'><%= comment.name %></a></td>
+	<td>
+	<a href="/comments/<%= comment.id %>" data-method='delete'>Destroy</a>
+	</td>
+</tr>
+<% end %>
+</table>

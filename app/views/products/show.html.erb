@@ -1,0 +1,38 @@
+
+<label>Name: </label><%= @product.name %><br>
+<label>Description: </label><%= @product.description %><br>
+<label>Price: </label><%= @product.price %><br>
+<label>Category: </label><%= @product.category.name %><br>
+
+<a href="/products/<%= @product.id %>/edit" hidden_method='patch'>Edit</a>
+<h4><a href="/">Back</a></h4>
+
+<form action='/comments' method='post'>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input type='hidden' name='comment[product_id]' value='<%= @product.id %>'>
+  <label>Comment:</label>
+  <input type='text' name='comment[comment]' placeholder='place comment here'/>
+  <input type='submit' value='Submit' />
+</form>
+
+
+
+<table>
+<tr>
+	<td>Comment</td>
+	<td>Date</td>
+	<td>Actions</td>
+</tr>
+<% @product.comments.each do |comment| %>
+<tr>
+	
+	<td><%= comment.comment %></td>
+	<td><%= comment.created_at %></td>
+	<td>
+	<a href="/comments/<%= comment.id %>" data-method='delete'>Destroy</a>
+	</td>
+</tr>
+<% end %>
+</table>
+
+<h2><a href="/comments">All comments</a></h2>

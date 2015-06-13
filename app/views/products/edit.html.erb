@@ -1,0 +1,22 @@
+<h2>Edit product</h2>
+<form action='/products/<%= @product.id %>' method='post'>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input type='hidden' name="_method" value="patch">
+  <select name='product[category_id]'>
+    <% @categories.each do |category| %>
+    <option value='<%= category.id %>'><%= category.name %></li>
+    <% end %>
+  </select>
+  <label>Name</label>
+  <input type='text' name='product[name]' value='<%= @product.name %>'/>
+  <label>Description</label>
+  <input type='text' name='product[description]' value='<%= @product.description %>'/>
+  <label>Price</label>
+  <input type='text' name='product[price]' value='<%= @product.price %>'/>
+
+  <input type='submit' value='Update' />
+
+</form>
+
+<a href="/products/<%= @product.id %>">Show</a>|
+<a href='/'>Back</a>
