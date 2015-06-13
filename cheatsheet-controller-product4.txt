@@ -1,0 +1,29 @@
+#in terminal
+
+
+rails g model Product name:string description:text price:decimal category:references
+rails g model Category name:string
+rails g model Comment comment:text product:references
+
+
+rake db:migrate
+
+rails g controller Products index new create show edit update destroy
+rails g controller Comments index new create show edit update destroy
+
+
+
+
+
+##rails c
+Product.create(name: "Coffee Mug", description: "with Coding Dojo Logo")
+Product.create(name: "T-Shirt", description: "with Coding Dojo Logo")
+Product.create(name: "Coffee Mug", description: "with Coding Dojo Logo")
+
+Category.new
+Category.all
+Category.create(name: "Electronics")
+Category.create(name: "Household")
+Category.create(name: "Gardening")
+Category.create(name: "Automotive")
+Category.create(name: "Ninjas")
